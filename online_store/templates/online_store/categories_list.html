@@ -1,0 +1,21 @@
+{% extends 'online_store/base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <h1>{{ title }}</h1>
+    {% if categories %}
+        <ul class="list-group">
+            {% for category in categories %}
+            <li class="list-group-item">
+                <h5><a href="{% url 'products_in_category_page' category.id %}">{{ category.name }}</a></h5>
+                <small>{{ category.description }}</small>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <div>
+            <p>Категории отсутствуют</p>
+        </div>
+    {% endif %}
+{% endblock %}
