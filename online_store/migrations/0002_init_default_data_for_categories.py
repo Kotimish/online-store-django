@@ -7,6 +7,10 @@ def populate_categories(apps, schema_editor):
     category = apps.get_model('online_store', 'Category')
     category.objects.bulk_create([
         category(
+            name='Без категории',
+            description='Товары без присвоенной категории.',
+        ),
+        category(
             name='Процессоры',
             description='Центральные процессоры (CPU) — основные вычислительные элементы компьютера, выполняющие арифметические и логические операции.',
         ),
@@ -52,6 +56,7 @@ def reverse_populate_categories(apps, schema_editor):
     category = apps.get_model('online_store', 'Category')
     category.objects.filter(
         name__in=[
+            'Без категории',
             'Процессоры',
             'Материнская плата',
             'Видеокарты',
