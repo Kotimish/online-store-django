@@ -3,13 +3,24 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-    <h1>{{ title }}</h1>
+    <div class="col-12 d-flex justify-content-between align-items-center">
+        <h2>{{ title }}</h2>
+        <a class="btn btn-primary" href="{% url 'post_add' %}">
+            <i class="bi bi-plus-lg"></i> Добавить пост
+        </a>
+    </div>
     {% if products %}
         <ul class="list-group">
             {% for product in products %}
             <li class="list-group-item">
                 <h5><a href="{% url 'product_detail' product.id %}">{{ product.name }}</a></h5>
                 <p>{{ product.price }} ₽</p>
+                <a href="{% url 'product_edit' product.id %}"
+                   class="btn btm-sm btn-warning me-2"
+                >Редактировать</a>
+                <a href="{% url 'product_delete' product.id %}"
+                   class="btn btm-sm btn-danger me-2"
+                >Удалить</a>
             </li>
         {% endfor %}
         </ul>
