@@ -1,0 +1,12 @@
+{% extends 'online_store/base.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+    <h1>{{ post.title }}</h1>
+    <p>Название: {{product.name}}</p>
+    <p>Категория: <a href="{% url 'products_in_category_page' product.category.id %}">{{ product.category.name }}</a></p>
+    <p>Описание: {{product.description}}</p>
+    <p>Цена: {{product.price}} ₽</p>
+    <p>Дата создания: {{product.created_at}}</p>
+{% endblock %}
