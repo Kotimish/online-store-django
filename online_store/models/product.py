@@ -15,3 +15,6 @@ class Product(TimestampMixin):
         blank=True
     )
     category = models.ForeignKey('online_store.Category', on_delete=models.CASCADE, related_name='products')
+
+    def __str__(self):
+        return self.name
