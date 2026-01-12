@@ -1,5 +1,7 @@
 from django.db import models
+
 from online_store.models.mixins import TimestampMixin
+
 
 class Product(TimestampMixin):
     name = models.CharField(
@@ -12,3 +14,4 @@ class Product(TimestampMixin):
         null=True,
         blank=True
     )
+    category = models.ForeignKey('online_store.Category', on_delete=models.CASCADE, related_name='products')
