@@ -10,6 +10,6 @@ def log_new_product_added(product_name: str, product_id: int):
     """
     Фоновая задача для логирования информации о добавлении нового товара.
     """
-    message = f"Новый товар добавлен в базу данных: '{product_name}' (ID: {product_id})"
+    message = f"New product added to the database: '{product_name}' (ID: {product_id})"
     logger.info(message)
     return message
