@@ -6,6 +6,9 @@ from online_store.forms import product as product_forms
 from online_store.models import Category, Product
 
 
+from online_store.tasks import log_new_product_added
+
+
 class ProductBase:
     model = Product
 
@@ -84,8 +87,10 @@ class ProductCreateView(ProductBase, CreateView):
 
     def form_valid(self, form):
         """Добавляем сообщение об успешном создании товара."""
-        messages.success(self.request, 'Пост успешно создан')
-        return super().form_valid(form)
+        response = super().form_valid(form)
+        log_new_product_added.delay(self.object.name, self.object.id)
+        messages.success(self.request, 'Новый товар успешно добавлен')
+        return response
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

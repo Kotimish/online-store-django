@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'online_store.apps.OnlineStoreConfig',
+
+    'django_celery_results',
 ]
 
 MIDDLEWARE = [
@@ -117,3 +119,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# Настройки Celery
+CELERY_BROKER_URL = 'redis://redis:6379/0'
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_TASK_IGNORE_RESULT = False
+
