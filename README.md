@@ -17,34 +17,10 @@
     cd online-store-django
     ```
 
-2. **Создаем виртуальное окружение**
+2. **Запуск через docker-compose**
     ```bash
-    python3 -m venv .venv
-    source .venv/bin/activate
-    ```
-    Примечание: Убедитесь, что ваша версия Python не ниже 3.12.
-    При необходимости указывайте явно версию Python при создании окружения.
-
-    К примеру (для Python3.12)
-    ```bash
-    python3.12 -m venv .venv
-    source .venv/bin/activate
-    ```
-
-3. **Устанавливаем необходимые пакеты с помощью poetry**
-    ```bash
-    poetry install
-    ```
-   Если poetry отсутствует, то установите его по следующей инструкции: [ссылка](https://python-poetry.org/docs/#installation)
-
-4. **Выполняем миграции для БД**
-    ```bash
-    python manage.py migrate
-    ```
-
-5. **Запуск**
-    ```bash
-    python manage.py runserver
+    sudo docker compose build
+    sudo docker compose up 
     ```
 
 Примечания:
